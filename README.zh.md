@@ -36,7 +36,12 @@ ACP 是独立 profile：它没有自己的窗口，Web 界面里的插件开关�
 
 ## 安装
 
-先构建（`pnpm install && pnpm build`），再把包安装到提供 Web 界面的 profile：
+```bash
+git clone https://github.com/MangMax/dsh-acp-config.git
+cd dsh-acp-config && pnpm install && pnpm build
+```
+
+再把包目录安装到提供 Web 界面的 profile：
 
 - **桌面端（就是当前 GUI）**：设置 → 插件 → 从本地包目录安装；或让 agent 安装这个 bundle。桌面 profile 由 Electron 独占管理，`dsh plugin --profile desktop …` 会被拒绝。
 - **Web profile**：`dsh plugin --profile web add /绝对路径/dsh-acp-config`。

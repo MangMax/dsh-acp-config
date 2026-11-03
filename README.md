@@ -36,7 +36,12 @@ Everything outside the markers is preserved byte for byte. The ACP profile compo
 
 ## Install
 
-Build first (`pnpm install && pnpm build`), then install the package into the profile that serves the Web UI:
+```bash
+git clone https://github.com/MangMax/dsh-acp-config.git
+cd dsh-acp-config && pnpm install && pnpm build
+```
+
+Then install the package directory into the profile that serves the Web UI:
 
 - **Desktop app** (this GUI): Settings → Plugins → install from the absolute package directory, or ask the agent to install the bundle. The desktop profile is managed by the Electron app, so `dsh plugin --profile desktop …` is refused.
 - **Web profile**: `dsh plugin --profile web add /absolute/path/to/dsh-acp-config`.
