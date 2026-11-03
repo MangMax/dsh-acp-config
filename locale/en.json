@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "ACP Config",
+    "description": "Configure `dsh --profile acp` from the Web UI: inherit or override web plugin switches, choose the agent preset, and set the sandbox permission."
+  }
+}

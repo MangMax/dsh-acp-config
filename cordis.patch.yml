@@ -1,0 +1,11 @@
+# dsh-acp-config — bundle patch.
+#
+# One Host row: the configuration engine plus the exact Fetch route the browser
+# half calls (`POST /api/dsh-acp-config`). The browser half lives in this same
+# package (`dsh.client`), so the settings page and the file writer ship as one
+# unit. Nothing here touches ACP composition at load time: the row only reads
+# and writes the ACP profile's own patch layer, and ACP picks the change up the
+# next time it boots (`patchReload: startup`).
+- insert:
+    - id: acp-config
+      name: 'dsh-acp-config'

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "ACP 模式配置",
+    "description": "在 Web 界面里配置 `dsh --profile acp`：继承或独立设置 Web 端插件开关、选择 agent preset、设置沙箱权限。"
+  }
+}
