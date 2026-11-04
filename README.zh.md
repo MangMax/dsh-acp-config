@@ -34,17 +34,25 @@ ACP 是独立 profile：它没有自己的窗口，Web 界面里的插件开关�
 
 标记之外的内容**逐字节保留**。ACP profile 的补丁层是 `patchReload: startup`，所以改动在**下次启动 ACP 时生效**；页面会明确写出这一点，不会假装已经实时生效。
 
-## 安装
+## 从 GitHub 直接安装
+
+仓库里已提交构建产物（`dist/`），**不需要本地构建**：
+
+- **Web profile**：`dsh plugin --profile web add github:MangMax/dsh-acp-config`
+- **桌面端（当前 GUI）**：设置 → 插件 → 安装，目标填 `github:MangMax/dsh-acp-config`（也可以填本地目录）。桌面 profile 由 Electron 独占管理，`dsh plugin --profile desktop …` 会被拒绝。
+- **固定到某个提交**：`github:MangMax/dsh-acp-config#<commit-sha>`
+
+## 从本地目录安装
+
+要改源码时用这条路径：
 
 ```bash
 git clone https://github.com/MangMax/dsh-acp-config.git
 cd dsh-acp-config && pnpm install && pnpm build
+dsh plugin --profile web add /绝对路径/dsh-acp-config
 ```
 
-再把包目录安装到提供 Web 界面的 profile：
-
-- **桌面端（就是当前 GUI）**：设置 → 插件 → 从本地包目录安装；或让 agent 安装这个 bundle。桌面 profile 由 Electron 独占管理，`dsh plugin --profile desktop …` 会被拒绝。
-- **Web profile**：`dsh plugin --profile web add /绝对路径/dsh-acp-config`。
+> 改完源码请 `pnpm build` 并**把 `dist/` 一起提交**——仓库里的产物就是给 `github:` 安装用的。
 
 包里同时带 Host 行（`acp-config`）和 `dsh.client` 浏览器半区。安装后**刷新页面**（⌘R / Ctrl+R），设置里会出现「**ACP 模式**」。
 

@@ -34,17 +34,25 @@ Saving writes a clearly delimited block into `$DSH_HOME/profiles/acp/cordis.patc
 
 Everything outside the markers is preserved byte for byte. The ACP profile composes its patch layers at **startup** (`patchReload: startup`), so the change takes effect the **next time ACP starts**. The page states this and never claims a live change.
 
-## Install
+## Install from GitHub
+
+The repository ships its build output (`dist/`), so no local build is needed:
+
+- **Web profile**: `dsh plugin --profile web add github:MangMax/dsh-acp-config`
+- **Desktop app** (this GUI): Settings → Plugins → install, with the target `github:MangMax/dsh-acp-config` (an absolute directory works too). The desktop profile is managed by the Electron app, so `dsh plugin --profile desktop …` is refused.
+- **Pin a commit**: `github:MangMax/dsh-acp-config#<commit-sha>`
+
+## Install from a local checkout
+
+Use this path when you want to change the source:
 
 ```bash
 git clone https://github.com/MangMax/dsh-acp-config.git
 cd dsh-acp-config && pnpm install && pnpm build
+dsh plugin --profile web add /absolute/path/to/dsh-acp-config
 ```
 
-Then install the package directory into the profile that serves the Web UI:
-
-- **Desktop app** (this GUI): Settings → Plugins → install from the absolute package directory, or ask the agent to install the bundle. The desktop profile is managed by the Electron app, so `dsh plugin --profile desktop …` is refused.
-- **Web profile**: `dsh plugin --profile web add /absolute/path/to/dsh-acp-config`.
+> After editing the source, run `pnpm build` and **commit `dist/`** — the committed build is what `github:` installs consume.
 
 The package ships both halves: a Host row (`acp-config`) and a `dsh.client` bundle. After installation, **reload the page** (⌘R / Ctrl+R) and open Settings → **ACP 模式**.
 

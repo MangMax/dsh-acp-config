@@ -1,5 +1,6 @@
+# dist/ is committed on purpose: `dsh plugin add github:...` packs only
+# `files`, so the built halves must exist in the repository.
 node_modules/
-dist/
 coverage/
 *.log
 .DS_Store
